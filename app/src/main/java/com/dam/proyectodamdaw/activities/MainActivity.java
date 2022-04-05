@@ -1,9 +1,11 @@
 package com.dam.proyectodamdaw.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,13 +16,43 @@ import com.dam.proyectodamdaw.base.CallInterface;
 import com.dam.proyectodamdaw.R;
 import com.dam.proyectodamdaw.base.ImageDownloader;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class MainActivity extends BaseActivity implements CallInterface, View.OnClickListener {
+    private final String TAG = MainActivity.class.getName();
     Root root;
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayout(R.layout.activity_main);
+
+        Log.d(TAG, "Ejecutando onCreate");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "Ejecutando onStart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "Ejecutando onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "Ejecutando onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Ejecutando onDestroy");
     }
 
     @Override
@@ -28,6 +60,7 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
         super.onResume();
         showProgress();
         executeCall(this);
+        Log.d(TAG, "Ejecutando onResume");
     }
 
     @Override
@@ -51,6 +84,23 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
 
     @Override
     public void onClick(View view){
+        Intent myIntent = new Intent(MainActivity.this, weatherDetail.class);
+        int i = recyclerView.getChildAdapterPosition(view);
+        myIntent.putExtra("info", root.list.get(i));
 
+        startActivity(myIntent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("root", root);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        root = (Root) savedInstanceState.getSerializable("root");
+        doInUI();
     }
 }

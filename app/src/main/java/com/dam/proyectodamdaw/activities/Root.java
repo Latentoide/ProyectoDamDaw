@@ -1,12 +1,13 @@
 package com.dam.proyectodamdaw.activities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
 // import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
 /* ObjectMapper om = new ObjectMapper();
 Root root = om.readValue(myJsonString, Root.class); */
-class Main{
+class Main implements Serializable{
     public double temp;
     public double feels_like;
     public double temp_min;
@@ -18,32 +19,32 @@ class Main{
     public double temp_kf;
 }
 
-class Weather{
+class Weather implements Serializable{
     public int id;
     public String main;
     public String description;
     public String icon;
 }
 
-class Clouds{
+class Clouds implements Serializable{
     public int all;
 }
 
-class Wind{
+class Wind implements Serializable{
     public double speed;
     public int deg;
     public double gust;
 }
 
-class Sys{
+class Sys implements Serializable{
     public String pod;
 }
 
-class Rain{
+class Rain implements Serializable{
     public double _3h;
 }
 
-class List{
+class List implements Serializable{
     public int dt;
     public Main main;
     public ArrayList<Weather> weather;
@@ -56,12 +57,12 @@ class List{
     public Rain rain;
 }
 
-class Coord{
+class Coord implements Serializable{
     public double lat;
     public double lon;
 }
 
-class City{
+class City implements Serializable{
     public int id;
     public String name;
     public Coord coord;
@@ -72,7 +73,7 @@ class City{
     public int sunset;
 }
 
-public class Root{
+public class Root implements Serializable {
     public String cod;
     public int message;
     public int cnt;
