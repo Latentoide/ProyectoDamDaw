@@ -38,7 +38,7 @@ public class MyReciclerViewAdapter extends RecyclerView.Adapter<MyReciclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull MyReciclerViewAdapter.ViewHolder viewHolder, int position){
-        ImageDownloader.DownloadImage(Parameters.URL_ICON_PRE + root.list.get(position).weather.get(0).icon + Parameters.URL_ICON_POST, viewHolder.imageView);
+        ImageDownloader.downloadImage(Parameters.URL_ICON_PRE + root.list.get(position).weather.get(0).icon + Parameters.URL_ICON_POST, viewHolder.imageView);
         viewHolder.tempMedia.setText(root.list.get(position).main.temp + "");
         viewHolder.tempMax.setText(root.list.get(position).main.temp_max+"");
         viewHolder.tempMin.setText(root.list.get(position).main.temp_min+"");

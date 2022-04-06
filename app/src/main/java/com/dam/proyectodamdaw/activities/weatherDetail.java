@@ -30,7 +30,7 @@ public class weatherDetail extends AppCompatActivity {
         min = findViewById(R.id.minSolo);
         desc = findViewById(R.id.descSola);
         dia = findViewById(R.id.diaSolo);
-        ImageDownloader.DownloadImage(Parameters.URL_ICON_PRE+ l.weather.get(0).icon+ Parameters.URL_ICON_POST, im);
+        ImageDownloader.downloadImage(Parameters.URL_ICON_PRE+ l.weather.get(0).icon+ Parameters.URL_ICON_POST, im);
         Date d = new Date((long)l.dt*1000);
         hora.setText(new SimpleDateFormat("HH:mm").format(d));
         fecha.setText(new SimpleDateFormat("dd/MM/YYYY").format(d));
@@ -61,6 +61,6 @@ public class weatherDetail extends AppCompatActivity {
         max.setText(savedInstanceState.getString("max"));
         min.setText(savedInstanceState.getString("min"));
         desc.setText(savedInstanceState.getString("desc"));
-        ImageDownloader.DownloadImage(Parameters.URL_ICON_PRE+ savedInstanceState.getString("miIcono")+ Parameters.URL_ICON_POST, im);
+        ImageDownloader.downloadImage(Parameters.URL_ICON_PRE+ savedInstanceState.getString("miIcono")+ Parameters.URL_ICON_POST, im);
     }
 }

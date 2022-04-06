@@ -23,11 +23,12 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
     private final String TAG = MainActivity.class.getName();
     Root root;
     private RecyclerView recyclerView;
+    private Ciudad ciudad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayout(R.layout.activity_main);
-
+        ciudad = (Ciudad) getIntent().getExtras().getSerializable("select");
         Log.d(TAG, "Ejecutando onCreate");
     }
 
@@ -65,7 +66,7 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
 
     @Override
     public void doInBackground() {
-        root = Connector.getConector().get(Root.class,"forecast?lat=39.5870774&lon=-0.5416143&appid=4d56a19050d401d7ba6b982145243362&lang=es&units=metric");
+        root = Connector.getConector().get(Root.class,"forecast?lat=" + ciudad.getLat() + "&lon="+ ciudad.getLon() +"&appid=4d56a19050d401d7ba6b982145243362&lang=es&units=metric");
     }
 
     @Override
