@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Unidades">
+
+        <ListPreference
+            android:defaultValue="standard"
+            android:entries="@array/unidades_entries"
+            android:entryValues="@array/unidades_values"
+            android:title="Unidades"
+            android:key="unidades"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Idioma">
+
+        <ListPreference
+            android:defaultValue="standard"
+            android:entries="@array/unidades_entries"
+            android:entryValues="@array/unidades_values"
+            android:title="Idioma"
+            android:key="idioma"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Tema">
+
+        <ListPreference
+            android:defaultValue="standard"
+            android:entries="@array/unidades_entries"
+            android:entryValues="@array/unidades_values"
+            android:title="Unidades"
+            android:key="unidades"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

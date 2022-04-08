@@ -3,7 +3,10 @@ package com.dam.proyectodamdaw.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,11 +27,14 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
     Root root;
     private RecyclerView recyclerView;
     private Ciudad ciudad;
+    private TextView nameCiu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayout(R.layout.activity_main);
+        nameCiu = findViewById(R.id.nomCiu);
         ciudad = (Ciudad) getIntent().getExtras().getSerializable("select");
+        nameCiu.setText(ciudad.getNombre());
         Log.d(TAG, "Ejecutando onCreate");
     }
 
@@ -66,7 +72,9 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
 
     @Override
     public void doInBackground() {
-        root = Connector.getConector().get(Root.class,"forecast?lat=" + ciudad.getLat() + "&lon="+ ciudad.getLon() +"&appid=4d56a19050d401d7ba6b982145243362&lang=es&units=metric");
+        if(root == null){
+            root = Connector.getConector().get(Root.class,"forecast?lat=" + ciudad.getLat() + "&lon="+ ciudad.getLon() +"&appid=4d56a19050d401d7ba6b982145243362&lang=es&units=metric");
+        }
     }
 
     @Override
@@ -104,4 +112,5 @@ public class MainActivity extends BaseActivity implements CallInterface, View.On
         root = (Root) savedInstanceState.getSerializable("root");
         doInUI();
     }
+
 }
