@@ -39,19 +39,19 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
             }
         });
 
-        ListPreference listPreferenceId = findPreference("unidades");
+        ListPreference listPreferenceId = findPreference("idioma");
 
         List<String> entriesId = Arrays.asList(getResources().getStringArray(R.array.unidades_entries));
         List<String> valuesId = Arrays.asList(getResources().getStringArray(R.array.unidades_values));
 
         String valId = entries.get(values.indexOf(GestionPreferencias.getInstance().getUnidad(getContext())));
 
-        listPreferenceId.setSummary("Seleccionado: " + val);
+        listPreferenceId.setSummary("Seleccionado: " + valId);
 
         listPreferenceId.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-                String val = entries.get(values.indexOf(newValue));
+                String val = entriesId.get(valuesId.indexOf(newValue));
                 listPreferenceId.setSummary("Seleccionado " + val);
 
                 return false;

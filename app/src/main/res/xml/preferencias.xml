@@ -14,9 +14,9 @@
     <PreferenceCategory android:title="Idioma">
 
         <ListPreference
-            android:defaultValue="standard"
-            android:entries="@array/unidades_entries"
-            android:entryValues="@array/unidades_values"
+            android:defaultValue="Español"
+            android:entries="@array/idioma_entries"
+            android:entryValues="@array/idioma_values"
             android:title="Idioma"
             android:key="idioma"
             />
