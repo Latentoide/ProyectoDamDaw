@@ -18,6 +18,11 @@ public class GestionPreferencias {
         return sharedPreferences.getString("unidades", "standard");
     }
 
+    public String getIdioma(Context context){
+        inicializa(context);
+        return sharedPreferences.getString("idioma", "Español");
+    }
+
     private void inicializa(Context context){
         if(sharedPreferences == null){
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);

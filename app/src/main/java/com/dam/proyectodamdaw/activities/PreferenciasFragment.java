@@ -25,9 +25,9 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
         List<String> entries = Arrays.asList(getResources().getStringArray(R.array.unidades_entries));
         List<String> values = Arrays.asList(getResources().getStringArray(R.array.unidades_values));
 
-        String val = entries.get(values.indexOf(GestionPreferencias.getInstance().getUnidad(getContext())));
+        int val = values.indexOf(GestionPreferencias.getInstance().getUnidad(getContext()));
 
-        listPreference.setSummary("Seleccionado: " + val);
+        listPreference.setSummary("Seleccionado: " + values.get(val));
 
         listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
@@ -39,20 +39,21 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
             }
         });
 
-        ListPreference listPreferenceId = findPreference("idioma");
+        ListPreference idiomaList = findPreference("idioma");
 
-        List<String> entriesId = Arrays.asList(getResources().getStringArray(R.array.unidades_entries));
-        List<String> valuesId = Arrays.asList(getResources().getStringArray(R.array.unidades_values));
+        List<String> idiomaEntry = Arrays.asList(getResources().getStringArray(R.array.idioma_entries));
+        List<String> idiomaVal = Arrays.asList(getResources().getStringArray(R.array.idioma_values));
 
-        String valId = entries.get(values.indexOf(GestionPreferencias.getInstance().getUnidad(getContext())));
 
-        listPreferenceId.setSummary("Seleccionado: " + valId);
+        int valId = idiomaVal.indexOf(GestionPreferencias.getInstance().getIdioma(getContext()));
 
-        listPreferenceId.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        idiomaList.setSummary("Seleccionado: " + idiomaVal.get(valId));
+
+        idiomaList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-                String val = entriesId.get(valuesId.indexOf(newValue));
-                listPreferenceId.setSummary("Seleccionado " + val);
+                String valId = idiomaEntry.get(idiomaVal.indexOf(newValue));
+                idiomaList.setSummary("Seleccionado " + valId);
 
                 return false;
             }
